@@ -22,10 +22,10 @@ public class Runner {
         Student student2 = new Student("Gary", 27, 472, history);
         DBHelper.save(student2);
 
-        Mentor mentor1 = new Mentor("Mr Brown");
+        Mentor mentor1 = new Mentor("Mr Brown", student1);
         DBHelper.save(mentor1);
 
-        Mentor mentor2 = new Mentor("Miss Drysdale");
+        Mentor mentor2 = new Mentor("Miss Drysdale", student2);
         DBHelper.save(mentor2);
 
         Lesson soilTheory = new Lesson("Soil Theory", 1, geography);
