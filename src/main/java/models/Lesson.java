@@ -11,12 +11,14 @@ public class Lesson {
     private int id;
     private String title;
     private int classroom;
+    private Course course;
 
     public Lesson() {}
 
-    public Lesson(String title, int classroom) {
+    public Lesson(String title, int classroom, Course course) {
         this.title = title;
         this.classroom = classroom;
+        this.course = course;
     }
 
     @Id
@@ -45,5 +47,15 @@ public class Lesson {
 
     public void setClassroom(int classroom) {
         this.classroom = classroom;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

@@ -27,10 +27,10 @@ public class Runner {
         Mentor mentor2 = new Mentor("Miss Drysdale");
         DBHelper.save(mentor2);
 
-        Lesson soilTheory = new Lesson("Soil Theory", 1);
+        Lesson soilTheory = new Lesson("Soil Theory", 1, geography);
         DBHelper.save(soilTheory);
 
-        Lesson worldWarTwo = new Lesson("World War Two", 2);
+        Lesson worldWarTwo = new Lesson("World War Two", 2, history);
         DBHelper.save(worldWarTwo);
 
         Instructor instructor1 = new Instructor("Mr Jones");
@@ -41,6 +41,7 @@ public class Runner {
 
         List<Student> studentList = DBCourse.getStudentForCourse(geography);
 
+        List<Lesson> lessonList = DBCourse.getLessonsForCourse(geography);
 
 
     }
