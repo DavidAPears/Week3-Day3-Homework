@@ -1,6 +1,10 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "lessons")
@@ -12,6 +16,7 @@ public class Lesson {
     private String title;
     private int classroom;
     private Course course;
+    private List<Student> students;
 
     public Lesson() {}
 
@@ -19,6 +24,7 @@ public class Lesson {
         this.title = title;
         this.classroom = classroom;
         this.course = course;
+        this.students = new ArrayList<Student>();
     }
 
     @Id
@@ -57,5 +63,27 @@ public class Lesson {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(
+            name = "students_lessons",
+            joinColumns = {@JoinColumn(name = "lesson_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "student_id", nullable = false, updatable = false)}
+    )
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+//    METHOD TO ADD STUDENT TO LESSON:
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 }

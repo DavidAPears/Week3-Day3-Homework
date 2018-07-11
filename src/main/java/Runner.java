@@ -1,5 +1,6 @@
 import db.DBCourse;
 import db.DBHelper;
+import db.DBStudent;
 import models.*;
 import org.hibernate.id.IdentifierGeneratorHelper;
 
@@ -33,6 +34,9 @@ public class Runner {
         Lesson worldWarTwo = new Lesson("World War Two", 2, history);
         DBHelper.save(worldWarTwo);
 
+        Lesson careerAdvice = new Lesson("Career Advice", 3, history);
+        DBHelper.save(careerAdvice);
+
         Instructor instructor1 = new Instructor("Mr Jones");
         DBHelper.save(instructor1);
 
@@ -43,6 +47,8 @@ public class Runner {
 
         List<Lesson> lessonList = DBCourse.getLessonsForCourse(geography);
 
+        DBStudent.addStudentToLesson(student1, worldWarTwo);
+        DBStudent.addStudentToLesson(student1, careerAdvice);
 
     }
 
