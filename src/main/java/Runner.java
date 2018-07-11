@@ -1,6 +1,9 @@
+import db.DBCourse;
 import db.DBHelper;
 import models.*;
 import org.hibernate.id.IdentifierGeneratorHelper;
+
+import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
@@ -12,10 +15,10 @@ public class Runner {
         Course history = new Course("History", "BA");
         DBHelper.save(history);
 
-        Student student1 = new Student("David", 40, 136);
+        Student student1 = new Student("David", 40, 136, geography);
         DBHelper.save(student1);
 
-        Student student2 = new Student("Gary", 27, 472);
+        Student student2 = new Student("Gary", 27, 472, history);
         DBHelper.save(student2);
 
         Mentor mentor1 = new Mentor("Mr Brown");
@@ -35,6 +38,10 @@ public class Runner {
 
         Instructor instructor2 = new Instructor("Mr Smith");
         DBHelper.save(instructor2);
+
+        List<Student> studentList = DBCourse.getStudentForCourse(geography);
+
+
 
     }
 
