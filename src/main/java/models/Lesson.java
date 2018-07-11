@@ -17,14 +17,16 @@ public class Lesson {
     private int classroom;
     private Course course;
     private List<Student> students;
+    private Instructor instructor;
 
     public Lesson() {}
 
-    public Lesson(String title, int classroom, Course course) {
+    public Lesson(String title, int classroom, Course course, Instructor instructor) {
         this.title = title;
         this.classroom = classroom;
         this.course = course;
         this.students = new ArrayList<Student>();
+        this.instructor = instructor;
     }
 
     @Id
@@ -85,5 +87,16 @@ public class Lesson {
 
     public void addStudent(Student student) {
         this.students.add(student);
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id", nullable = false)
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 }

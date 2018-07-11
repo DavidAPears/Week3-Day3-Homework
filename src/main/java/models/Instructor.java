@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "instructors")
@@ -8,11 +10,13 @@ public class Instructor {
 
     private int id;
     private String name;
+    private List<Lesson> lessons;
 
     public Instructor() {}
 
     public Instructor(String name) {
         this.name = name;
+        this.lessons = new ArrayList<Lesson>();
     }
 
     @Id
@@ -34,4 +38,16 @@ public class Instructor {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY)
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
 }
+
+

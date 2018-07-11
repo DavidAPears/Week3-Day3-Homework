@@ -28,20 +28,21 @@ public class Runner {
         Mentor mentor2 = new Mentor("Miss Drysdale", student2);
         DBHelper.save(mentor2);
 
-        Lesson soilTheory = new Lesson("Soil Theory", 1, geography);
-        DBHelper.save(soilTheory);
-
-        Lesson worldWarTwo = new Lesson("World War Two", 2, history);
-        DBHelper.save(worldWarTwo);
-
-        Lesson careerAdvice = new Lesson("Career Advice", 3, history);
-        DBHelper.save(careerAdvice);
-
         Instructor instructor1 = new Instructor("Mr Jones");
         DBHelper.save(instructor1);
 
         Instructor instructor2 = new Instructor("Mr Smith");
         DBHelper.save(instructor2);
+
+        Lesson soilTheory = new Lesson("Soil Theory", 1, geography, instructor1);
+        DBHelper.save(soilTheory);
+
+        Lesson worldWarTwo = new Lesson("World War Two", 2, history, instructor2);
+        DBHelper.save(worldWarTwo);
+
+        Lesson careerAdvice = new Lesson("Career Advice", 3, history, instructor1);
+        DBHelper.save(careerAdvice);
+
 
         List<Student> studentList = DBCourse.getStudentForCourse(geography);
 
